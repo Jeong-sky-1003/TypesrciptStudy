@@ -7,3 +7,28 @@ var addArrow = function (a, b) { return a + b; };
 var addType = function (element) { return element.a + element.b; };
 var addSignature = function (a, b) { return a + b; };
 console.log("this is signature function.  3 + 5 = " + addSignature(3, 5));
+var add = function (a, b) {
+    if (typeof b === "string") {
+        return a;
+    }
+    else {
+        return a + b;
+    }
+};
+var push = function (config) {
+    if (typeof config === "string") {
+        console.log(config);
+    }
+    else {
+        console.log(config.path, config.state);
+    }
+};
+// a와 b는 모든 signature 함수에 들어가는데 c는 아니다.
+// 그렇기에 선언시 c는 선택사항이라는 것을 알리기위해 물음표를 추가한다.
+var add3 = function (a, b, c) {
+    if (c)
+        return a + b + c;
+    return a + b;
+};
+add3(1, 3);
+add3(1, 5, 2);

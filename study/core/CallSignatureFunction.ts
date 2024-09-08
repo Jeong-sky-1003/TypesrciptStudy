@@ -18,3 +18,53 @@ const addType = (element : Numbers) => element.a + element.b;
 type AddNumbers = (a:number, b:number) => number;
 const addSignature : AddNumbers = (a, b) => a + b;
 console.log("this is signature function.  3 + 5 = " + addSignature(3,5));
+
+// 2. 오버로딩(over loading) function
+//  시크니쳐 함수보다 길이가 길지만 오버로딩을 사용하기 위해 이 형태로도 작성된다.
+//  오버로딩은 함수가 여러개의 call signature를 가질떄 사용한다.
+//  파라미터 내 서로 다른 케이스를 잘 파악해야함
+type AddNumbers2 = {
+    (a: number, b: number) : number
+    (a: number, b: string) : number
+}
+
+const add: AddNumbers2 = (a, b) => {
+        if (typeof b === "string") {
+            return a;
+        } else {
+            return a + b;
+        }
+    }
+
+type Config = {
+    path: string,
+    state: object
+}
+
+type Push = {
+    (path: string) : void
+    (config: Config) : void
+}
+
+const push : Push = (config) => {
+    if (typeof config === "string") {
+        console.log(config);
+    } else {
+        console.log(config.path, config.state);
+    }
+}
+
+type AddNumber3 = {
+    (a: number, b: number) : number
+    (a: number, b: number, c: number) : number
+}
+
+// a와 b는 모든 signature 함수에 들어가는데 c는 아니다.
+// 그렇기에 선언시 c는 선택사항이라는 것을 알리기위해 물음표를 추가한다.
+const add3 : AddNumber3 = (a, b, c?: number) => {
+    if (c) return a + b + c;
+    return a + b;
+}
+
+add3(1, 3);
+add3(1, 5, 2);
