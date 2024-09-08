@@ -1,7 +1,7 @@
 const person : [string, number, boolean] = ["sky", 29, true]
 ;
 
-// Tupple 배열에 각 위치에 필요한 타입과 개수를 알림
+// Tuple 배열에 각 위치에 필요한 타입과 개수를 알림
 //  항상 정해진 개수와 요소를 사용하는 곳에 사용됨
 const player: readonly [string, number, boolean] = ["sky", 29, true]
 ;
