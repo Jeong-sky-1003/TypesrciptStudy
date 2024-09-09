@@ -68,3 +68,34 @@ const add3 : AddNumber3 = (a, b, c?: number) => {
 
 add3(1, 3);
 add3(1, 5, 2);
+
+type Human = {
+    name : string
+    age? : number
+}
+;
+
+type MakeHumanType = {
+    (name : string) : Human
+    (name : string, age: number) : Human
+}
+;
+
+const humanMaker : MakeHumanType = (name: string, age? : number) => {
+    if (age) {
+        return {
+            name : name
+            , age : age
+        }
+    } else {
+        return {
+            name : name
+        }
+    }
+}
+
+const sky = humanMaker("sky");
+const dam = humanMaker("dam", 3);
+
+console.log(sky.name + ", " + sky.age);
+console.log(dam.name + ", " + dam.age);

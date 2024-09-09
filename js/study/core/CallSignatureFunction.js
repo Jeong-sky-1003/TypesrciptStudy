@@ -32,3 +32,20 @@ var add3 = function (a, b, c) {
 };
 add3(1, 3);
 add3(1, 5, 2);
+var humanMaker = function (name, age) {
+    if (age) {
+        return {
+            name: name,
+            age: age
+        };
+    }
+    else {
+        return {
+            name: name
+        };
+    }
+};
+var sky = humanMaker("sky");
+var dam = humanMaker("dam", 3);
+console.log(sky.name + ", " + sky.age);
+console.log(dam.name + ", " + dam.age);
